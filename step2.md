@@ -69,4 +69,4 @@ The best way to visualize this is a person walking an imaginary map. They can wa
 
 At this point your ui element is almost ready to go. It has states defined and a map/transitions in how you can move between these states. The only problem is that we haven't brought in our poor dom element yet.
 
-(step3.md)[Step 3 - Define what you will animate]
+[Step 3 - Define what you will animate](step3.md)

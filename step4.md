@@ -139,4 +139,4 @@ button.addEventListener( 'mouseleave', function() {
 
 If you run the example now you should be able to see the button animate in from being transparent and then on mouse over it'll become slightly transparent again.
 
-(step5.md)[Step 5 - Tweaking Animations]
+[Step 5 - Tweaking Animations](step5.md)

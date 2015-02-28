@@ -60,4 +60,4 @@ You may notice we used the word alpha here to represent opacity. You could name 
 
 If you wanted to animate other properties you could simply add them in the button object for each state.
 
-(step2.md)[Step 2 - Define your transitions]
+[Step 2 - Define your transitions](step2.md)

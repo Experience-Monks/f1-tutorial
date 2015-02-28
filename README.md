@@ -35,4 +35,5 @@ $ npm run example
 The source for the example lives in the example folder.
 
 So let's create an `F1` ui element: 
-(step1.md)[Step 1 - Define your states]
+
+[Step 1 - Define your states](step1.md)

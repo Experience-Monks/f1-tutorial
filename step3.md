@@ -126,4 +126,4 @@ As you can see it reduces a lot of the boilerplate especially if you're trying t
 
 `f1-model` is much more generic where it simply copies all values from the calculated state into another object defined in the `toAnimate` function call. This can be used if working with MVC frameworks that have databinding and directives. `f1` can simply update the model and directives can update css.
 
-(step4.md)[Step 4 - Making things move]
+[Step 4 - Making things move](step4.md)
