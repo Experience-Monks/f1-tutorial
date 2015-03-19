@@ -50,11 +50,11 @@ ui.states( {
     'rollover', 'idle',
     'idle', 'out'
 ])
-.toAnimate( {
+.targets( {
   
   button: find( '#button' )
 })
-.teach( [
+.parsers( [
 
     function( button, state ) {
 
@@ -111,11 +111,11 @@ ui.states( {
     'rollover', 'idle',
     'idle', 'out'
 ])
-.toAnimate( {
+.targets( {
 
     button: button
 })
-.teach( [ function( item, data ) {
+.parsers( [ function( item, data ) {
 
     item.style.opacity = data.alpha;
 }] )

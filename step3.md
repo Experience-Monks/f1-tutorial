@@ -41,25 +41,25 @@ ui.states( {
     'rollover', 'idle',
     'idle', 'out'
 ])
-.toAnimate( {
+.targets( {
   
   button: find( '#button' )
 });
 ```
 
-The `toAnimate` function accepts an object. Which looks very similar to one of the states. But instead of there being properties like in the state we pass the item we want to animate in our case the `#button` dom element.
+The `targets` function accepts an object. Which looks very similar to one of the states. But instead of there being properties like in the state we pass the item we want to animate in our case the `#button` dom element.
 
 If we had two elements it would look something like
 
 ```javascript
-ui.toAnimate( {
+ui.targets( {
   
   button: find( '#button' ),
   anotherElement: find( '#someQueryString' )
 });
 ```
 
-As you remember all our states define a property called `alpha` we now need to be able to take that alpha value and somehow apply it to css. To do this we have to `teach` `f1` how to handle properties of states.
+As you remember all our states define a property called `alpha` we now need to be able to take that alpha value and somehow apply it to css. To do this we have to `parsers` `f1` how to handle properties of states.
 
 This is done by passing in an `Array` of functions which will parse data from the current state of `f1` and apply it to css.
 
@@ -94,11 +94,11 @@ ui.states( {
     'rollover', 'idle',
     'idle', 'out'
 ])
-.toAnimate( {
+.targets( {
   
   button: find( '#button' )
 })
-.teach( [
+.parsers( [
 
     function( button, state ) {
 
@@ -107,7 +107,7 @@ ui.states( {
 ]);
 ```
 
-Above we called the teach method of `f1` instance and passed it an `Array` with one function. As `f1` updates this function will be run and it's only purpose is to take the values from the state and apply it to dom element. 
+Above we called the parsers method of `f1` instance and passed it an `Array` with one function. As `f1` updates this function will be run and it's only purpose is to take the values from the state and apply it to dom element. 
 
 Now you should be able to see how the `alpha` property gets applied to the CSS property opacity.
 
@@ -116,14 +116,14 @@ It's quite laborious to always have to define your own methods which will parse 
 - `f1-dom`
 - `f1-model`
 
-`f1-dom` is a collection of functions which will take properties from defined states and apply it to many css properties. If you used `f1-dom` calling the teach method would look something like this:
+`f1-dom` is a collection of functions which will take properties from defined states and apply it to many css properties. If you used `f1-dom` calling the parsers method would look something like this:
 
 ```javascript
-ui.teach( require( 'f1-dom' ) );
+ui.parsers( require( 'f1-dom' ) );
 ```
 
 As you can see it reduces a lot of the boilerplate especially if you're trying to target multiple CSS properties.
 
-`f1-model` is much more generic where it simply copies all values from the calculated state into another object defined in the `toAnimate` function call. This can be used if working with MVC frameworks that have databinding and directives. `f1` can simply update the model and directives can update css.
+`f1-model` is much more generic where it simply copies all values from the calculated state into another object defined in the `targets` function call. This can be used if working with MVC frameworks that have databinding and directives. `f1` can simply update the model and directives can update css.
 
 [Step 4 - Making things move](step4.md)
