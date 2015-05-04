@@ -68,7 +68,7 @@ ui.transitions( [
 ]);
 ```
 
-Obviously as your ui becomes more complex you may want to animate properties individually. Let's assume we've added in another property to adjust the position right. We could do something like this:
+Obviously as your ui becomes more complex you may want to animate properties individually. Let's assume we've added in another property to adjust the css left. We could do something like this:
 
 ```javascript
 var eases = require( 'eases' );
@@ -78,29 +78,42 @@ ui.states( {
     out: {
         button: {
             alpha: 0,
-            position: [100, 0, 0]
+            left: 50
         }
     },
     idle: {
         button: {
             alpha: 1,
-            position: [0, 0, 0]    
+            left: 0   
         }
     },
     rollover: {
         button: {
             alpha: 0.1,
-            position: [0, 0, 0]
+            left: 0
         }
     }
 });
+
+ui.parsers([
+
+    function( button, state ) {
+
+        button.style.opacity = state.alpha;
+    },
+    function( button, state ) {
+
+        button.style.position = "relative"
+        button.style.left = state.left + 'px';
+    }
+]);
 
 ui.transitions( [
 
     { from: 'out', to: 'idle', animation: {
         button: {
             alpha: { duration: 0.1, ease: eases.quadIn },
-            position: { duration: 0.5, ease: eases.elasticOut }
+            left: { duration: 0.5, ease: eases.elasticOut }
         } 
     }},
     { from: 'idle', to: 'rollover', animation: {
@@ -124,12 +137,12 @@ In the above where the transition for `out` to `idle` is defined:
 { from: 'out', to: 'idle', animation: {
         button: {
             alpha: { duration: 0.1, ease: eases.quadIn },
-            position: { duration: 0.5, ease: eases.elasticOut }
+            left: { duration: 0.5, ease: eases.elasticOut }
         } 
 }}
 ```
 
-The `button` element will now have two properties which are being animated: `alpha` and `position`. `alpha` will animate from `out` to `idle` in `0.1` seconds using an ease of `quadIn` and the property `position` will animate in duration of `0.5` seconds using an ease of `elasticOut`.
+The `button` element will now have two properties which are being animated: `alpha` and `left`. `alpha` will animate from `out` to `idle` in `0.1` seconds using an ease of `quadIn` and the property `left` will animate in duration of `0.5` seconds using an ease of `elasticOut`.
 
 In the second example:
 ```javascript
