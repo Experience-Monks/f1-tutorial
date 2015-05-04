@@ -9,18 +9,10 @@ When defining your transitions like so:
 ```javascript
 ui.transitions( [
 
-    { from: 'out', to: 'idle', animation: {
-      duration: 0.4
-    }},
-    { from: 'idle', to: 'rollover', animation: {
-      duration: 0.4
-    }},
-    { from: 'rollover', to: 'idle', animation: {
-      duration: 0.4
-    }},
-    { from: 'idle', to: 'out', animation: {
-      duration: 0.4
-    }}
+    { from: 'out', to: 'idle' },
+    { from: 'idle', to: 'rollover' },
+    { from: 'rollover', to: 'idle' },
+    { from: 'idle', to: 'out' }
 ]);
 ```
 
