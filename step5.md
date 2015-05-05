@@ -60,7 +60,7 @@ ui.transitions( [
 ]);
 ```
 
-Obviously as your ui becomes more complex you may want to animate properties individually. Let's assume we've added in another property to adjust the css left. We could do something like this:
+Obviously as your ui becomes more complex you may want to animate properties individually. Let's assume we've added in another property to adjust css left. We could do something like this:
 
 ```javascript
 var eases = require( 'eases' );
