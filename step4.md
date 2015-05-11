@@ -45,10 +45,10 @@ ui.states( {
 })
 .transitions( [
 
-    'out', 'idle',
-    'idle', 'rollover',
-    'rollover', 'idle',
-    'idle', 'out'
+    { from: 'out', to: 'idle' },
+    { from: 'idle', to: 'rollover' },
+    { from: 'rollover', to: 'idle' },
+    { from: 'idle', to: 'out' }
 ])
 .targets( {
   
@@ -106,10 +106,10 @@ ui.states( {
 })
 .transitions( [
 
-    'out', 'idle',
-    'idle', 'rollover',
-    'rollover', 'idle',
-    'idle', 'out'
+    { from: 'out', to: 'idle' },
+    { from: 'idle', to: 'rollover' },
+    { from: 'rollover', to: 'idle' },
+    { from: 'idle', to: 'out' }
 ])
 .targets( {
 
