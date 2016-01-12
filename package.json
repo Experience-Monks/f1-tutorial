@@ -19,8 +19,8 @@
     "babel-core": "^6.4.0"
   },
   "scripts": {
-    "install": "budo example/index.js -d example --live --open",
-    "example": "budo example/index.js -d example --live --open"
+  "start": "node scripts/start.js"
+
   },
   "keywords": [
     "f1,tutorial"
