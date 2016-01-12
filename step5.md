@@ -137,6 +137,6 @@ In the second example:
 		}
 	}}
 ```
-A global `duration` is set which is `2` seconds and a global ease function will be used `quadIn`. So basically our good 'ol `marginLeft` will animate in `2` seconds using the function `expoIn` and also any other properties which maybe defined in the state. The `opacity` property however will be animated in `0.3` seconds and will be delayed by `1` second. Which basically means that it will sit in the `idle` state for `1` second before it becomes to animate towards the `rollover` state.
+A global `duration` is set which is `2` seconds and a global ease function will be used `quadIn`. So basically our good 'ol `marginLeft` will animate in `2` seconds using the function `expoIn` and also any other properties which maybe defined in the state. The `opacity` property however will be animated in `0.3` seconds and will be delayed by `1` second. Which basically means that it will sit in the `idle` state for `1` second before it begins to animate towards the `rollover` state.
 
 Using the above you should now be able to create UI elements using the DOM.
