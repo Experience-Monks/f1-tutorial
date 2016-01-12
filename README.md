@@ -13,7 +13,7 @@ If they're creating a button they would likely take the following steps:
 
 With `F1-DOM` you will work in a similar fashion:
 
-1. Define `states` of your ui and what it will look like in the states
+1. Define `states` of your UI and what it will look like in the states
 2. Define the `transitions` between all of it's states
 
 Of course we'll also need to define what we'll be animating so there is an additional step:
@@ -34,6 +34,6 @@ $ npm start
 
 The source for the example lives in the example folder.
 
-So let's create an `F1-DOM` ui element: 
+So let's create an `F1-DOM` UI element: 
 
 [Step 1 - Define your states](step1.md)
