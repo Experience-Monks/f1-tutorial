@@ -1,7 +1,7 @@
 {
   "name": "f1-tutorial",
-  "version": "1.0.0",
-  "description": "This is a small tutorial on how to use f1",
+  "version": "2.0.0",
+  "description": "This is a small tutorial on how to use f1-dom",
   "main": "index.js",
   "license": "MIT",
   "author": {
@@ -10,18 +10,17 @@
     "url": "https://github.com/Jam3"
   },
   "dependencies": {
-    "beefy": "^2.1.3",
-    "dom-select": "0.0.0",
-    "eases": "^1.0.6",
-    "f1": "^3.2.1",
-    "f1-dom": "^1.1.0"
+    "budo": "^6.1.0",
+    "eases": "^1.0.8",
+    "f1": "^7.0.1",
+    "f1-dom": "^7.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.4.0"
   },
   "scripts": {
-    "install": "cd example && ../node_modules/bin/beefy index.js --live --open",
-    "example": "cd example && ../node_modules/bin/beefy index.js --live --open"
+    "install": "budo example/index.js -d example --live --open",
+    "example": "budo example/index.js -d example --live --open"
   },
   "keywords": [
     "f1,tutorial"
