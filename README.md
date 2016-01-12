@@ -29,7 +29,7 @@ To keep things simple `f1-dom` will simply just modifying the DOM element's CSS 
 If at any time you'd like to see what you're building plus a little bit more you can run the command in terminal:
 ```
 $ npm install
-$ npm run example
+$ npm start
 ```
 
 The source for the example lives in the example folder.
