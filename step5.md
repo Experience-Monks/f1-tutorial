@@ -59,8 +59,8 @@ Obviously as your ui becomes more complex you may want to animate properties ind
 ```javascript
 var eases = require( 'eases' );
 
-states: {
-		idle: {
+	states:{
+		idle:{
 			elButton:{
 				style:{
 					opacity: 1,
@@ -69,8 +69,8 @@ states: {
 			},
 		},
 		
-		rollover: {
-			elButton: {
+		rollover:{
+			elButton:{
 				style:{
 					opacity: 0.1,
 					marginLeft: 0
@@ -78,8 +78,8 @@ states: {
 			},
 		},
 		
-		rollout: {
-			elButton: {
+		rollout:{
+			elButton:{
 				style:{
 					opacity: 0,
 					marginLeft: 500

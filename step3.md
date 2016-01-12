@@ -24,16 +24,16 @@ body = f1DOM({
 			},
 		},
 		
-		rollover: {
-			elButton: {
+		rollover:{
+			elButton:{
 				style:{
 					opacity: 0.1
 				}
 			},
 		},
 		
-		rollout: {
-			elButton: {
+		rollout:{
+			elButton:{
 				style:{
 					opacity: 0
 				}

@@ -37,16 +37,16 @@ body = f1DOM({
 			},
 		},
 		
-		rollover: {
-			elButton: {
+		rollover:{
+			elButton:{
 				style:{
 					opacity: 0.1
 				}
 			},
 		},
 		
-		rollout: {
-			elButton: {
+		rollout:{
+			elButton:{
 				style:{
 					opacity: 0
 				}
@@ -86,8 +86,8 @@ var body; //Our page body variable!
 body = f1DOM({
 	el: document.body,
 	
-	states: {
-		idle: {
+	states:{
+		idle:{
 			elButton:{
 				style:{
 					opacity: 1
@@ -95,8 +95,8 @@ body = f1DOM({
 			},
 		},
 		
-		rollover: {
-			elButton: {
+		rollover:{
+			elButton:{
 				style:{
 					opacity: 0.1
 				}
