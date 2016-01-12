@@ -16,16 +16,16 @@ body = f1DOM({
 
         },
 
-        rollover: {
-            elButton: {
+        rollover:{
+            elButton:{
                 style:{
                     opacity: 0.1
                 }
             },
         }
 
-        rollout: {
-            elButton: {
+        rollout:{
+            elButton:{
                 style:{
                     opacity: 0
                 }
@@ -56,16 +56,16 @@ body = f1DOM({
 			},
 		},
 		
-		rollover: {
-			elButton: {
+		rollover:{
+			elButton:{
 				style:{
 					opacity: 0.1
 				}
 			},
 		},
 		
-		rollout: {
-			elButton: {
+		rollout:{
+			elButton:{
 				style:{
 					opacity: 0
 				}
@@ -80,7 +80,7 @@ body = f1DOM({
 	})
 ```
 
-The above basically tells `f1-dom` that we can move from `rollout` to `idle` and from `idle` to `rollover`. 
+The above essentially tells `f1-dom` that we can move from `rollout` to `idle` and from `idle` to `rollover`. 
 
 You may have noticed the `bi` parameter. Set to false, as it is above, and the transitions will only go one way. Set it to true, and the animation will now have the ability to be played in reverse! Take a look at this.
 
@@ -94,4 +94,4 @@ This one transition will cause a fade in whenever the cursor enters the area of 
 
 At this point your ui element is almost ready to go. It has states defined and a map/transitions in how you can move between these states. The only problem is that we haven't brought in our poor dom element yet.
 
-[Step 3 (May need to be removed) - Define what you will animate](step3.md)
+[Step 3 - Define what you will animate](step3.md)

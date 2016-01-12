@@ -26,12 +26,12 @@ body = f1DOM({
 			},
 		},
 	
-		rollover: {
-			elButton: {
+		rollover:{
+			elButton:{
 				}
 			},
 			
-			idle:{
+		rollout:{
 			elButton:{
 			},
 		},
@@ -39,7 +39,7 @@ body = f1DOM({
 })
 ```
 
-Your states are now defined: idle and rollover. In each state we added a button object which will contain all the information to define the state for our item we'll animate. But obviously really nothing is going to happen if there are no values defined so lets add in some values. This is done by adding `style:{}` inside `elButton:{}`, and inserting CSS elements.
+Your states are now defined: idle, rollover and rollout. In each state we added a button object which will contain all the information to define the state for our item we'll animate. But obviously really nothing is going to happen if there are no values defined so lets add in some values. This is done by adding `style:{}` inside `elButton:{}`, and inserting CSS elements.
 
 ```javascript
 body = f1DOM({
@@ -55,16 +55,16 @@ body = f1DOM({
 			
 		},
 		
-		rollover: {
-			elButton: {
+		rollover:{
+			elButton:{
 				style:{
 					opacity: 0.1
 				}
 			},
 		}
 		
-		rollout: {
-			elButton: {
+		rollout:{
+			elButton:{
 				style:{
 					opacity: 0
 				}
