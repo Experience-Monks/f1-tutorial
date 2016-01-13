@@ -1,39 +1,34 @@
 # Step 5 - Tweaking Animations
 
-If you run our current example. It'll look very boring and both the animate in function (out -> idle) and roll over animation (idle -> rollover) will have the same duration.
+If you run our current example. It'll look very boring and both the animate in function (`rollout` -> `idle`) and roll over animation (`idle` -> `rollover`) will have the same duration.
 
 We can do better.
 
 When defining your transitions like so:
 
 ```javascript
-ui.transitions( [
-
-    { from: 'out', to: 'idle' },
-    { from: 'idle', to: 'rollover' },
-    { from: 'rollover', to: 'idle' },
-    { from: 'idle', to: 'out' }
-]);
+transitions: [
+    {from: 'idle', to: 'rollover', bi: false},
+	{from: 'rollover', to: 'rollout', bi: false},
+	{from: 'rollout', to: 'idle', bi: false}
+  ]
 ```
 
 We can actually set durations for animations:
 
 ```javascript
-ui.transitions( [
-
-    { from: 'out', to: 'idle', animation: {
-      duration: 2
+transitions: [
+	//{ from: 'idle', to: 'rollover', bi: true }
+    {from: 'idle', to: 'rollover', bi: false, animation: {
+    duration: 0.3
     }},
-    { from: 'idle', to: 'rollover', animation: {
-      duration: 0.25
-    }},
-    { from: 'rollover', to: 'idle', animation: {
-      duration: 0.1
-    }},
-    { from: 'idle', to: 'out', animation: {
-      duration: 2
-    }}
-]);
+	{from: 'rollover', to: 'rollout', bi: false, animation: {
+	duration: 0.5
+	}},
+	{from: 'rollout', to: 'idle', bi: false, animation: {
+	duration: 2
+	}}
+  ]
 ```
 
 Using the above code you'll be able to adjust it so that the animate in or (out -> idle) animation will take `2` seconds.
@@ -41,23 +36,22 @@ Using the above code you'll be able to adjust it so that the animate in or (out 
 You can also incorporate `easing` equations in the following way to make the animation more visually appealing:
 
 ```javascript
-var eases = require( 'eases' );
+var eases = require( 'eases' ); //Define this at the top of the document
 
-ui.transitions( [
-
-    { from: 'out', to: 'idle', animation: {
-      duration: 2, ease: eases.quadIn
-    }},
-    { from: 'idle', to: 'rollover', animation: {
-      duration: 0.25, ease: eases.expoIn
-    }},
-    { from: 'rollover', to: 'idle', animation: {
-      duration: 0.1, ease: eases.expoOut
-    }},
-    { from: 'idle', to: 'out', animation: {
-      duration: 2, ease: eases.quadIn
-    }}
-]);
+transitions: [
+    {from: 'idle', to: 'rollover', bi: false, animation: {
+		duration: 0.3,
+		ease: eases.quadIn
+		}},
+	{from: 'rollover', to: 'rollout', bi: false, animation: {
+		duration: 0.5,
+		ease: eases.expoOut
+		}},
+	{from: 'rollout', to: 'idle', bi: false, animation: {
+		duration: 2,
+		ease: eases.bounceIn
+		}}
+  ]
 ```
 
 Obviously as your ui becomes more complex you may want to animate properties individually. Let's assume we've added in another property to adjust the css left attribute. We could do something like this:
@@ -65,87 +59,84 @@ Obviously as your ui becomes more complex you may want to animate properties ind
 ```javascript
 var eases = require( 'eases' );
 
-ui.states( {
-
-    out: {
-        button: {
-            alpha: 0,
-            left: 50
-        }
-    },
-    idle: {
-        button: {
-            alpha: 1,
-            left: 0   
-        }
-    },
-    rollover: {
-        button: {
-            alpha: 0.1,
-            left: 0
-        }
-    }
-});
-
-ui.parsers([
-
-    function( button, state ) {
-
-        button.style.opacity = state.alpha;
-    },
-    function( button, state ) {
-
-        button.style.position = "relative"
-        button.style.left = state.left + 'px';
-    }
-]);
-
-ui.transitions( [
-
-    { from: 'out', to: 'idle', animation: {
-        button: {
-            alpha: { duration: 0.1, ease: eases.quadIn },
-            left: { duration: 0.5, ease: eases.elasticOut }
-        } 
-    }},
-    { from: 'idle', to: 'rollover', animation: {
-      duration: 2, ease: eases.expoIn,
-      
-      button: {
-            alpha: { duration: 1, delay: 1, ease: eases.expoOut }
-      }  
-    }},
-    { from: 'rollover', to: 'idle', animation: {
-      duration: 0.1, ease: eases.expoOut
-    }},
-    { from: 'idle', to: 'out', animation: {
-      duration: 2, ease: eases.quadIn
-    }}
-]);
+	states:{
+		idle:{
+			elButton:{
+				style:{
+					opacity: 1,
+					marginLeft: 0
+				}
+			},
+		},
+		
+		rollover:{
+			elButton:{
+				style:{
+					opacity: 0.1,
+					marginLeft: 0
+				}
+			},
+		},
+		
+		rollout:{
+			elButton:{
+				style:{
+					opacity: 0,
+					marginLeft: 500
+				}
+			},
+		},
+	},
+	transitions: [
+    {from: 'idle', to: 'rollover', bi: false, animation: {
+		elButton: {
+			style: {
+		opacity: {duration: 0.3, ease: eases.quadIn}
+			}
+		}
+	}},
+	{from: 'rollover', to: 'rollout', bi: false, animation: {
+		elButton: {
+			style:{
+		opacity: {duration: 0.5, ease: eases.expoOut}
+			}
+		}
+	}},
+	{from: 'rollout', to: 'idle', bi: false, animation: {
+		elButton: {
+			style: {
+		opacity: {duration: 0.3, ease: eases.quadIn},
+		marginLeft: {duration: 2, delay: 1, ease: eases.elasticOut}
+			}
+		}
+	}}
+]
 ```
-
-In the above where the transition for `out` to `idle` is defined:
+In the above where the transition for `rollout` to `idle` is defined:
 ```javascript
-{ from: 'out', to: 'idle', animation: {
-        button: {
-            alpha: { duration: 0.1, ease: eases.quadIn },
-            left: { duration: 0.5, ease: eases.elasticOut }
-        } 
+{from: 'rollout', to: 'idle', bi: false, animation: {
+		elButton: {
+			style: {
+		opacity: {duration: 0.3, ease: eases.quadIn},
+		marginLeft: {duration: 2, delay: 1, ease: eases.elasticOut}
+			}
+		}
 }}
 ```
 
-The `button` element will now have two properties which are being animated: `alpha` and `left`. `alpha` will animate from `out` to `idle` in `0.1` seconds using an ease of `quadIn` and the property `left` will animate in duration of `0.5` seconds using an ease of `elasticOut`.
+The `button` element will now have two properties which are being animated: `opacity` and `marginLeft`. `opacity` will animate from `rollout` to `idle` in `0.3` seconds using an ease of `quadIn` and the property `marginLeft` will animate in duration of `2` seconds, with a delay of `1` second, using an ease of `elasticOut`.
 
 In the second example:
 ```javascript
-{ from: 'idle', to: 'rollover', animation: {
-      duration: 2, ease: eases.expoIn,
-      
-      button: {
-            alpha: { duration: 1, delay: 1, ease: eases.expoOut }
-      }  
-}}
+ {from: 'idle', to: 'rollover', bi: false, animation: {
+		duration: 2, ease: eases.expoIn,
+		elButton: {
+			style: {
+		opacity: {duration: 0.3, delay: 1, ease: eases.quadIn}
+			}
+		}
+	}}
 ```
-A global `duration` is set which is `2` seconds and a global ease function will be used `quadIn`. So basically our good 'ol alpha will animate in `2` seconds using the function `quadIn` and also any other properties which maybe defined in the state. The `left` property however will be animated in `1` second and will be delayed by `1` second. Which basically means that it will sit in the `idle` state for `1` second before it becomes to animate towards the `rollover` state.
+A global `duration` is set which is `2` seconds and a global ease function will be used `quadIn`. So basically our good 'ol `marginLeft` will animate in `2` seconds using the function `expoIn` and also any other properties which maybe defined in the state. The `opacity` property however will be animated in `0.3` seconds and will be delayed by `1` second. Which basically means that it will sit in the `idle` state for `1` second before it begins to animate towards the `rollover` state.
 
-Using the above you should now be able to create ui elements using the dom.
+Using the above you should now be able to create UI elements using the DOM.
