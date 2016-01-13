@@ -73,7 +73,7 @@ body = f1DOM({
 		},
 	}, 
 	transitions: [
-  {from: 'idle', to: 'rollover', bi: false },
+    {from: 'idle', to: 'rollover', bi: false },
 	{from: 'rollover', to: 'rollout', bi: false},
 	{from: 'rollout', to: 'idle', bi: false}
   ]
